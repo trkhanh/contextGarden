@@ -1,0 +1,137 @@
+{
+  "version": "1.0",
+  "description": "Context Garden Sync Configuration - Maps local paths to remote targets",
+  
+  "repositories": {
+    "company": {
+      "local_path": "/path/to/company/repo/.context",
+      "remote_url": "git@github.com:company/contextgarden.git",
+      "remote_branch": "main",
+      "enabled": true
+    },
+    "personal": {
+      "local_path": "/home/kane/Workspaces/contextGarden",
+      "remote_url": "git@github.com:trkhanh/contextGarden.git",
+      "remote_branch": "main",
+      "enabled": true
+    }
+  },
+
+  "sync_mappings": [
+    {
+      "name": "Agents & Commands",
+      "source": ".context/agents",
+      "targets": [
+        {
+          "repo": "company",
+          "path": "agents/",
+          "enabled": true
+        },
+        {
+          "repo": "personal",
+          "path": "agents/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Memory & Knowledge",
+      "source": ".context/memory",
+      "targets": [
+        {
+          "repo": "company",
+          "path": "memory/",
+          "enabled": true
+        },
+        {
+          "repo": "personal",
+          "path": "skills/memory/",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "name": "Rules & Constraints",
+      "source": ".context/rules",
+      "targets": [
+        {
+          "repo": "company",
+          "path": "rules/",
+          "enabled": true
+        },
+        {
+          "repo": "personal",
+          "path": "project-rules/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Defects & History",
+      "source": ".context/defects",
+      "targets": [
+        {
+          "repo": "company",
+          "path": "defects/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Goals & OKRs",
+      "source": ".context/goals",
+      "targets": [
+        {
+          "repo": "company",
+          "path": "goals/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Tech Debt Tracking",
+      "source": ".context/techdebt",
+      "targets": [
+        {
+          "repo": "company",
+          "path": "techdebt/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Session Working Memory",
+      "source": ".context/sessions",
+      "targets": [
+        {
+          "repo": "company",
+          "path": "sessions/",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+
+  "sync_options": {
+    "dry_run": false,
+    "verbose": true,
+    "auto_commit": true,
+    "commit_message_template": "sync: context garden updates - {timestamp}",
+    "preserve_history": true,
+    "ignore_patterns": [
+      ".DS_Store",
+      "*.swp",
+      "*.swo",
+      ".git",
+      "__pycache__",
+      ".env"
+    ],
+    "conflict_strategy": "remote-wins"
+  },
+
+  "offline_mode": {
+    "enabled": true,
+    "queue_dir": ".context-sync-queue",
+    "auto_sync_on_online": true
+  }
+}
