@@ -1,0 +1,182 @@
+{
+  "version": "1.0",
+  "description": "Example: Company Context Garden Sync - Maps .context structure to GitHub repos",
+  
+  "repositories": {
+    "company-context": {
+      "local_path": "/path/to/company/repo/.context",
+      "remote_url": "git@github.com:company/contextgarden.git",
+      "remote_branch": "main",
+      "enabled": true,
+      "description": "Company-wide context garden"
+    },
+    "trkhanh-contextgarden": {
+      "local_path": "/home/kane/Workspaces/contextGarden",
+      "remote_url": "git@github.com:trkhanh/contextGarden.git",
+      "remote_branch": "main",
+      "enabled": true,
+      "description": "Personal context garden"
+    }
+  },
+
+  "sync_mappings": [
+    {
+      "name": "Agents & Commands",
+      "description": "AI agents, commands, and instructions",
+      "source": ".context/agents",
+      "targets": [
+        {
+          "repo": "company-context",
+          "path": "agents/",
+          "enabled": true,
+          "description": "Company agents"
+        },
+        {
+          "repo": "trkhanh-contextgarden",
+          "path": "agents/",
+          "enabled": false,
+          "description": "Personal agents (disabled for company context)"
+        }
+      ]
+    },
+    {
+      "name": "Memory & Knowledge",
+      "description": "Domain logic, architecture, dependencies",
+      "source": ".context/memory",
+      "targets": [
+        {
+          "repo": "company-context",
+          "path": "memory/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Rules & Constraints",
+      "description": "Code style, testing, impact scoring",
+      "source": ".context/rules",
+      "targets": [
+        {
+          "repo": "company-context",
+          "path": "rules/",
+          "enabled": true
+        },
+        {
+          "repo": "trkhanh-contextgarden",
+          "path": "project-rules/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Defects & Historical Issues",
+      "description": "Bug tracking and resolution history",
+      "source": ".context/defects",
+      "targets": [
+        {
+          "repo": "company-context",
+          "path": "defects/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Strategic Goals & OKRs",
+      "description": "Team goals aligned to code improvements",
+      "source": ".context/goals",
+      "targets": [
+        {
+          "repo": "company-context",
+          "path": "goals/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Technical Debt Tracking",
+      "description": "Active debt items and refactoring tasks",
+      "source": ".context/techdebt",
+      "targets": [
+        {
+          "repo": "company-context",
+          "path": "techdebt/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Session Working Memory",
+      "description": "Temporal notes from active development sessions",
+      "source": ".context/sessions",
+      "targets": [
+        {
+          "repo": "company-context",
+          "path": "sessions/",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "LLM Router & Index",
+      "description": "Central index for AI routing decisions",
+      "source": ".context/.index.md",
+      "targets": [
+        {
+          "repo": "company-context",
+          "path": ".index.md",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "name": "Prompts Library",
+      "description": "Reusable prompt templates for AI interactions",
+      "source": ".context/prompts",
+      "targets": [
+        {
+          "repo": "company-context",
+          "path": "prompts/",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+
+  "sync_options": {
+    "dry_run": false,
+    "verbose": true,
+    "auto_commit": true,
+    "commit_message_template": "sync: context garden updates - {timestamp}",
+    "preserve_history": true,
+    "history_dir": ".sync-history",
+    "ignore_patterns": [
+      ".DS_Store",
+      "*.swp",
+      "*.swo",
+      ".git",
+      ".gitignore",
+      "__pycache__",
+      ".env",
+      ".env.local",
+      "node_modules",
+      "dist",
+      "build",
+      ".cache",
+      "*.tmp"
+    ],
+    "conflict_strategy": "remote-wins"
+  },
+
+  "offline_mode": {
+    "enabled": true,
+    "queue_dir": ".context-sync-queue",
+    "auto_sync_on_online": true,
+    "max_queue_age_days": 7
+  },
+
+  "monitoring": {
+    "enabled": true,
+    "log_file": ".context-sync-logs/sync.log",
+    "alert_on_failure": true
+  }
+}
