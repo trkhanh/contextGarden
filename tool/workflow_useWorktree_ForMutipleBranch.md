@@ -1,3 +1,7 @@
+---
+tags:
+  - Engineering/git
+---
 # Leveraging Git Worktree for Parallel Agent Development
 
 **Goal:** Run multiple agents simultaneously on different branches/issues within the same local machine to accelerate development velocity.
