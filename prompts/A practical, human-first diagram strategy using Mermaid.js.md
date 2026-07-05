@@ -3,6 +3,11 @@ tags:
   - promptEngineering
   - LLM/Prompt
 publish: "true"
+copilot-command-context-menu-enabled: true
+copilot-command-slash-enabled: true
+copilot-command-context-menu-order: 10
+copilot-command-model-key: ""
+copilot-command-last-used: 0
 ---
 This is a great follow-up. For a **MiniApp + BFF (Backend for Frontend)** architecture, the right diagram strategy is critical because the complexity sits not in deep backend logic, but in **orchestration** (BFF aggregating multiple downstream services) and **mapping** (MiniApp calls → BFF transforms → upstream APIs).
 

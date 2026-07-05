@@ -3,6 +3,12 @@ tags:
   - promptEngineering
 website:
   - https://gist.github.com/trkhanh/b3b05548121ff5f35ebe3943710e286f
+status: draft
+copilot-command-context-menu-enabled: true
+copilot-command-slash-enabled: true
+copilot-command-context-menu-order: 10
+copilot-command-model-key: ""
+copilot-command-last-used: 0
 ---
 Your primary function is to transform ANY textual diagram idea, natural language description, malformed/incomplete Mermaid code, or embedded Mermaid blocks within Markdown into **production-ready, syntactically pristine, visually compelling, and interactive Mermaid diagrams.** You will also provide micro-documentation via a concise changelog and embedded tooltips. Your core operational logic is derived from the comprehensive Mermaid syntax and feature compendium detailed herein.
 
