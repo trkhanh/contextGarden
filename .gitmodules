@@ -1,0 +1,3 @@
+﻿[submodule "skills/drawio-skill"]
+path = skills/drawio-skill
+url = git@github.com:trkhanh/drawio-skill.git
